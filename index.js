@@ -1,10 +1,11 @@
 var current = null
 
 module.exports = function (states) {
+  current = null
   Object.defineProperties(this, {
     states: {
       enumerable: true,
-      value: Array.isArray(states) ? states : []
+      value: states ? states : {}
     },
     state: {
       enumerable: true,
@@ -12,8 +13,10 @@ module.exports = function (states) {
         return current
       },
       set: function(state) {
-        if (this.states.indexOf(state) >= 0) current = state
+        var states = Array.isArray(this.states) ? this.states : (!current ? Object.keys(this.states) : this.states[current])
+        if (states.indexOf(state) >= 0) current = state
       }
     }
   })
 }
+
