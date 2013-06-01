@@ -1,4 +1,4 @@
-twitch-finite
-=============
+tiny-fsm
+========
 
-an attempt at a minimal finite state machine in es5 with the node.js api.
+An attempt at a minimal finite state machine in es5 with the node.js api.
