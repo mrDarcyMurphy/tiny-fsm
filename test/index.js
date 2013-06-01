@@ -8,7 +8,7 @@ var objs = {
   buzz: ['fizz']
 }
 
-describe('FMS', function(){
+describe('FSM', function(){
   describe('init', function(){
     it('sets passed in states', function(){
       var fsm = new FSM(['foo', 'bar'])
