@@ -1,30 +1,19 @@
-var TwitchFSM = function (a, b) {
-  this.states = b
-  if (a) this.state = a
-  return this
-}
+var current = null
 
-TwitchFSM.prototype = Object.defineProperties(TwitchFSM.prototype, {
-  currentState: {
-    enumerable: false,
-    configurable: false,
-    writable: true,
-    value: null
-  },
-  state: {
-    enumerable: true,
-    configurable: false,
-    get: function() {
-      return this.currentState
+module.exports = function (states) {
+  Object.defineProperties(this, {
+    states: {
+      enumerable: true,
+      value: Array.isArray(states) ? states : []
     },
-    set: function(state) {
-      if (this.states.indexOf(state) >= 0) this.currentState = state
+    state: {
+      enumerable: true,
+      get: function() {
+        return current
+      },
+      set: function(state) {
+        if (this.states.indexOf(state) >= 0) current = state
+      }
     }
-  },
-  transition: {
-    enumerable: true,
-    value: function(target) {
-      this.state = target
-    }
-  }
-})
+  })
+}
