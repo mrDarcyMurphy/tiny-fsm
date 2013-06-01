@@ -1,0 +1,17 @@
+{
+  "name": "twitch-finite",
+  "version": "0.0.0",
+  "description": "a finite state machine",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mrDarcyMurphy/twitch-finite.git"
+  },
+  "author": "Mr. Darcy Murphy",
+  "license": "WTFPL",
+  "readmeFilename": "README.md",
+  "gitHead": "447b5769c8c2d48a6ed02322513e56ecc191464b"
+}
