@@ -1,6 +1,7 @@
+var EventEmitter = require('events').EventEmitter
 var current = null
 
-module.exports = function (states) {
+var FSM = function (states) {
   current = null
   Object.defineProperties(this, {
     states: {
@@ -17,9 +18,16 @@ module.exports = function (states) {
         if (Array.isArray(this.states)) states = this.states
         else if (!current)              states = Object.keys(this.states)
         else                            states = this.states[current]
-        if (states.indexOf(state) >= 0) current = state
+        if (states.indexOf(state) >= 0) {
+          if (current) this.emit('exit', current)
+          current = state
+          this.emit('enter', current)
+        }
       }
     }
   })
 }
 
+FSM.prototype = Object.create(EventEmitter.prototype)
+
+module.exports = FSM
