@@ -13,7 +13,10 @@ module.exports = function (states) {
         return current
       },
       set: function(state) {
-        var states = Array.isArray(this.states) ? this.states : (!current ? Object.keys(this.states) : this.states[current])
+        var states
+        if (Array.isArray(this.states)) states = this.states
+        else if (!current)              states = Object.keys(this.states)
+        else                            states = this.states[current]
         if (states.indexOf(state) >= 0) current = state
       }
     }
