@@ -26,6 +26,9 @@ var FSM = function (states) {
       }
     }
   })
+  this.on('goto', function(state){
+    this.state = state
+  }, this)
 }
 
 FSM.prototype = Object.create(EventEmitter.prototype)
